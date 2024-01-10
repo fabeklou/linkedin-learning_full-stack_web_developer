@@ -1,0 +1,4 @@
+# Learning Regular Expressions
+
+## Course details
+Regular expressions can speed up tedious tasks and streamline your workflow. They are an indispensable tool with programming languages like Java, JavaScript, Perl, Python, Ruby, C#, and more. In this course, instructor Kevin Skoglund goes over the definitions, details, and basic processes to start using regular expressions. Kevin explains what regular expressions are, what types are available in different programming languages, and what notations you should use. He dives into characters and character sets, then goes over how repetition is used with metacharacters, how it can be quantified, and more. He discusses grouping, alternation, and anchors. Kevin shows you how to capture content and create a backreference to the captured data. Plus, he covers positive and negative lookahead assertions, lookbehind assertions, and multiple lookaround assertions.
