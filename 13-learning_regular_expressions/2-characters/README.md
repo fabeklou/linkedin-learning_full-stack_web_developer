@@ -32,8 +32,17 @@ In standard mode `/pattern/`, when the first match is found, the engine stops th
 
 ## Metacharacters
 
-## The wildcard metacharacter
+Metacharacters are characters with special meaning. They hold the power of regular expressions.
 
-## Escaping metacharacter
+Used with literal characters in pattern construction they can have diverse meanings depending on the way they are used or where they are placed in the pattern.
 
-## Other special characters
+Here is a non-exhaustive list of metacharacters:
+```
+^ $ [ ] ( ) \ ? + * - . , { } ! < =
+```
+
+### The wildcard metacharacter
+
+### Escaping metacharacter
+
+### Other special characters
