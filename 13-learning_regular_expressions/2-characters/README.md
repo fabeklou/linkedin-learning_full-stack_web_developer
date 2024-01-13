@@ -43,6 +43,16 @@ Here is a non-exhaustive list of metacharacters:
 
 ### The wildcard metacharacter
 
+The wildcard metacharacter `<.>`, is a special character that matches any characters except the new line character.
+
+**example**: the pattern `/h.t/` will match the string/substring `hot`, `hat` and `hit` but since it only represents a single character it will not match the string `heat`.
+
+To use the "real" `dot` that will only match the character `<.>` and not all characters like the wildcard character, we need to escape it using the backslash symbol.
+
+**example**: the pattern `/xx\.xx/` should be preferred to match a string with this format `xx.xx`
+
+Remember a good RegEx should match only the target string or sub-string and nothing more, and false positives should be avoided at all costs.
+
 ### Escaping metacharacter
 
 ### Other special characters
