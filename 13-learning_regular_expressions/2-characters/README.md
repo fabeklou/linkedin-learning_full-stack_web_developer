@@ -38,7 +38,7 @@ Used with literal characters in pattern construction they can have diverse meani
 
 Here is a non-exhaustive list of metacharacters:
 ```
-^ $ [ ] ( ) \ ? + * - . , { } ! < =
+^ $ [ ] ( ) \ / ? + * - . , { } ! < =
 ```
 
 ### The wildcard metacharacter
@@ -54,5 +54,22 @@ To use the "real" `dot` that will only match the character `<.>` and not all cha
 Remember a good RegEx should match only the target string or sub-string and nothing more, and false positives should be avoided at all costs.
 
 ### Escaping metacharacter
+
+If we want to use a literal character instead of the metacharacter itself we just have to escape it.
+
+The escape character `<\> `is also a meta-character that precedes another meta-character and tells the regex engine to treat the following character as literal and not a meta-character.
+
+**Example**: the pattern `/google\.com/` will only match the string `google.com` and not `google/com`
+
+If you asked yourself, how do I use a literal backslash character in a pattern?
+
+Well, this is a great question, and the answer is quite simple, you also need to escape it.
+Remember the escape character is also a meta-character that tells the regex engine to treat what follows as a metacharacter and the backslash character is not an exception.
+
+Must know:
+- Literal characters should never be escaped
+- Quotation marks are not meta-characters, so they should also not be escaped
+- Just like backslash, the forward slash also needs to be escaped in most cases
+
 
 ### Other special characters
