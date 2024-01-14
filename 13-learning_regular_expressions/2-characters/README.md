@@ -73,3 +73,10 @@ Must know:
 
 
 ### Other special characters
+
+Other characters used in pattern construction:
+
+- space character: is just a literal space character
+- tab: `\t`
+- line break: `\n`
+- carriage return: `\r`
