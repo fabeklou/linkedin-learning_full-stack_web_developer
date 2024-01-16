@@ -36,6 +36,14 @@ Be careful with character ranges, just like character sets they only match a sin
 
 ## Negative character sets
 
+A negative character set is almost identical to a regular character set with one key difference, it tells the engine to match any single character that was not specified inside the pair of square brackets.
+
+The negation is specified as the first character, inside the pair of square brackets with the caret symbol `^`.
+
+The caret symbol `^`, outside the square brackets, represents the beginning of the string to match.
+
+Although it can be very helpful in many cases, a negative character set should be used with parsimony as it may lead to false positives, due to the large range of characters it usually looks for.
+
 ## Metacharacters inside character sets
 
 ## Shorthand character sets
