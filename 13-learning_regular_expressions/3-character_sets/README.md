@@ -46,4 +46,15 @@ Although it can be very helpful in many cases, a negative character set should b
 
 ## Metacharacters inside character sets
 
+Most metacharacters used inside of a character set are escaped by default, so there is no need to escape them again.
+
+The only exceptions are:
+- The closing bracket `]` which will end the character set earlier if not escaped
+- The caret symbol `^` will negate the character set otherwise
+- The dash symbol `-` which represents a range of character
+- And finally, the backslash `\` metacharacter itself, which will escape the character directly following it if not escaped itself.
+
+Try to exercise with a regex that matches these strings: **file01 file_1 file-1 file.1**
+
+
 ## Shorthand character sets
