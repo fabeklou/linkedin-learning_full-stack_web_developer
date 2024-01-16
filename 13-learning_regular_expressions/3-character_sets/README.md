@@ -56,5 +56,24 @@ The only exceptions are:
 
 Try to exercise with a regex that matches these strings: **file01 file_1 file-1 file.1**
 
-
 ## Shorthand character sets
+
+They are extremely useful and make patterns cleaner and more readable.
+
+The syntax is extremely simple and only made of the escape metacharacter `\` and a literal alphabetical character.
+
+| Shorthand   | Meaning              |  Equivalent!   |
+| ----------- | -----------          | ----------     |
+| \d          | digit                | [0-9]          |
+| \D          | non-digit            | [^0-9]         |
+| \w          | word character       | [a-ZA-Z0-9_]   |
+| \W          | non word character   | [^a-zA-Z0-9_]  |
+| \s          | space character      | [ \t\n\r]      |
+| \S          | non space character  | [^ \t\n\r]     |
+
+A shorthand character set can be used inside of a regular character.
+
+Example: `/my[\s\_\-]pattern/`.
+
+usage of shorthand negative character sets can be confusing.
+The pattern `/[\S\D]/` will match either anything that is not a space character or anything that is not a digit. in short, it will match everything.
