@@ -30,6 +30,32 @@ Before we get to quantified repetition, it is essential to mention that repetiti
 
 ## Quantified repetition
 
+Quantified repetition is a more convenient, easy-to-understand and readable way of matching multiple consecutive repetitions of a character or a group of characters.
+
+It uses metacharacters like `{`, `}` and `,` with a syntax following the structure `{min,max}`.
+**min** is mandatory and represents the minimum number of the precedent characters that should be matched (greater or equal to Zero) and **max** is optional and represents the maximum number of the precedent characters that should be matched (max is assumed to be equal to min if value is not provided and no comma and assumed to be infinite if value is not provided but a comma is present).
+
+Example of valid syntaxes:
+
+- `/\d{2}/`: min is equal to 2 and max is also equal to 2. This pattern will match any two consecutive digits.
+- `/\d{2,}/`: min is equal to 2 and max is equal to infinite. This pattern will match any consecutive digits of 2 characters or more.
+- `/\d{2,5}/`: min is equal to 2 and max is equal to 5. This pattern will match any consecutive digits of a minimum of 2 characters and a maximum of 5 characters.
+
+Most of the time, you will be using quantified repetition to match standardize data, when the target string is expected to have a specific format, such as a telephone number.
+
+Use this string sample to practice quantified repetition in pattern construction:
+
+```
+1. a
+2. ab
+3. abc
+4. abcd
+5. abcde
+6. abcdef
+```
+
 ## Greedy expressions
+
+
 
 ## Lazy expressions
