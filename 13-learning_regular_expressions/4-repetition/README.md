@@ -67,3 +67,19 @@ The most crucial thing to understand is that regexes are greedy when we use repe
 The key takeaway is that regexes are eager and greedy and a good understanding of these concepts is essential to construct precise patterns.
 
 ## Lazy expressions
+
+A lazy expression is the opposite of the default greedy behavior of regular expressions. It makes use of another metacharacter, the `?` to make a preceding quantifier lazy.
+
+Usage examples:
+- +?
+- *?
+- {min,max}?
+- ??
+
+In short, the question mark appent to a repetition character tells the engine to apply a lazy behavior instead of the default greedy behavior. This results in matching the least consecutive number of characters possible.
+
+The magic of a lazy expression is that instead of matching the longest string possible the engine checks the next element in the pattern before a match and sees if there is a possibility to give control to it.
+
+To have a better understanding, let's take the example of the pattern `/.+?\d+/` and the string `/file_01/`.
+- the first part of the pattern `.+?` will match the string from the character `f` to the underscore.
+-  then he finds out that control can be given to the next part of the pattern `\d+` that is greedy and matches the substring `01`.
