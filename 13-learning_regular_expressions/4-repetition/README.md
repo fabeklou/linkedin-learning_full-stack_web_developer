@@ -41,7 +41,7 @@ Example of valid syntaxes:
 - `/\d{2,}/`: min is equal to 2 and max is equal to infinite. This pattern will match any consecutive digits of 2 characters or more.
 - `/\d{2,5}/`: min is equal to 2 and max is equal to 5. This pattern will match any consecutive digits of a minimum of 2 characters and a maximum of 5 characters.
 
-Most of the time, you will be using quantified repetition to match standardize data, when the target string is expected to have a specific format, such as a telephone number.
+Most of the time, you will be using quantified repetition to match standardized data, when the target string is expected to have a specific format, such as a telephone number.
 
 Use this string sample to practice quantified repetition in pattern construction:
 
@@ -56,6 +56,14 @@ Use this string sample to practice quantified repetition in pattern construction
 
 ## Greedy expressions
 
+The most crucial thing to understand is that regexes are greedy when we use repetition characters. This means that they will try to match the maximum number of characters possible.
 
+**Example**: in this regex `/".+"/` and this string `"SALAD", "Tomato", "Onion"`, the way the engine works is:
+- the first quote of the regex will match the first quote of the string
+- then the repetition character `+` appent to the wildcard `.` will match the rest of the string from the character `S` to the last double quote.
+- the engine will then realize that the pattern does not match the string this way and give back some characters until it finds a character that matches the next character literal or metacharacter in the pattern.
+- in our case, the engine only gives back the last double quote character for a match to be found.
+
+The key takeaway is that regexes are eager and greedy and a good understanding of these concepts is essential to construct precise patterns.
 
 ## Lazy expressions
