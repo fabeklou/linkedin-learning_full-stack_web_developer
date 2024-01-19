@@ -22,10 +22,20 @@ Just like any character or metacharacter, grouping can also be used with repetit
 
 **Example**: the pattern `/i (hate|like) the rain/` will match both the string `"I hate the rain"` and `"I like the rain"`.
 
-Grouping can be very useful for, capturing and  replacing, alternation and repetition operator application
+Grouping can be very useful for:
+- capturing and  replacing: using the $index (1 indexed) to get each captured group individually
+- alternation: using the metacharacter `|`, with the syntax `(pattern1|pattern2|patternx)`
+- or apply repetition operator or quantified repetition: `/I am (so ){1,}happy !/`
 
 ## Alternation metacharacters
 
+As said in the previous section, alternation in one of the use cases of grouping (if not the main). Alternation is comparable to an `OR` logical operator and uses the pipe symbol `|` to separate the operands (in this context group of characters).
 
+The engine checks for potential matches from left to right and leaves the group immediately after a match is found.
+
+Although alternation can be used without grouping, it is advisable to as much as possible use both together to avoid any ambiguity.
+
+Example:
+- the pattern `/(aa|bb|cc){3}/` match `"aabbcc"`, `"aaccbb"`, `"bbccaa"`, `"bbaacc"` ... 
 
 ## Efficiency when using alternation
