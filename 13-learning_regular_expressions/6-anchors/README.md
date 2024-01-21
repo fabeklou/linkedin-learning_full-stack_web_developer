@@ -41,3 +41,14 @@ Many of the Unix tools only support single-line mode, as multi-line mode comes l
 
 
 ## Word boundaries
+
+Word boundaries are like previously seen anchors; but for words. They tell the regex engine, the start and/or the end of a word. A word will be considered a match only if it is a real word with some non-word character before and after and not as part of a lengthier word.
+
+The meta character `\b` is used to indicate the start or the end of a word and the metacharacter `\B` tells the engine not to consider a match at the extremity of the word (not a boundary). With `\B`, the match will be a sub-word and never a whole word.
+
+We can also see `\b` as meaning, after/before this I want anything but not a word character (`a-zA-Z0-9_`), but should not be seen as a space character because it does not match any character and any non-word character creates two boundaries, one before and one after.
+
+Just like start and end anchors, word boundaries represent position and not actual characters.
+
+**Example**: the pattern `/\bsupportive\b/` will match the string `"supportive"` but not the string `"unsupportive"`. The pattern `/\BLove\B/` will match the string `"ILoveU"`.
+ 
