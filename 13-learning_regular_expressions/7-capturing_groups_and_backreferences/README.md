@@ -54,6 +54,29 @@ If an optional group is not captured it will not have a backreference. This may 
 
 ## Find and replace using backreferences
 
+Captures made with grouping can be available outside of the regular expression in which it was done, but this functionality is not available in all engines.
 
+This is generally used for replacing the match string and generating a new string based on it.
+
+An example of usage can be:
+- applying the pattern `/(is w+)/` to the string  `/Learning is frustrating/` to capture the string `"is frustrating"` and use the capture outside to generate the text `"Learning is exciting"`, only by replacing the captured group.
+
+The recommended way of finding and replacing a part of a string is:
+1. Create a regular expression
+2. test the regex against a sample string
+3. add capturing group (watch out for optional expressions)
+4. write the replacement string using backreferences ($1 or \1 in Python and $1 only for JavaScript)
 
 ## Non-capturing group expressions
+
+As seen in the previous section a regex engine will automatically capture any group.
+But what happens if we do not want or need a particular capture?
+
+Assuming we have tons of groups in our pattern but only gonna use a few of them as backreference. Wouldn't it be useful to be able to choose which one you want to capture and ignore the rest?
+
+Well, that is where the non-capture group expression comes in. This expression `?=`, placed first inside a group will tell the engine to not capture the group.
+The whole syntax looks like `(?=group)`.
+
+In addition to previously discussed advantages, non-capturing group expression can also:
+- free up storage for other captures
+- improve speed for large or complex searches
