@@ -74,8 +74,8 @@ But what happens if we do not want or need a particular capture?
 
 Assuming we have tons of groups in our pattern but only gonna use a few of them as backreference. Wouldn't it be useful to be able to choose which one you want to capture and ignore the rest?
 
-Well, that is where the non-capture group expression comes in. This expression `?=`, placed first inside a group will tell the engine to not capture the group.
-The whole syntax looks like `(?=group)`.
+Well, that is where the non-capture group expression comes in. This expression `?:`, placed first inside a group will tell the engine to not capture the group.
+The whole syntax looks like `(?:group)`.
 
 In addition to previously discussed advantages, non-capturing group expression can also:
 - free up storage for other captures
