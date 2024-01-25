@@ -37,13 +37,14 @@ The question mark `?` placed first inside the group tells the regex engine not t
 Here, the equal sign `=` basically means that if this group is there, then validate the matching otherwise, ignore it.
 
 a few things to remember:
-- the optional group is included in the match
+- the optional group is not included in the match
 - the group is not captured
-- available in most engines but not in Unix tools
+- lookaround assertions are available in most engines but not in Unix tools
 
-Example: the pattern `/(?=green coffee)coffee/` will match `"green"` in the string `"green coffee"`
+Example: the pattern `/(?=green coffee)green/` will match `"green"` in the string `"green coffee"`.
 
-lookahead expressions mostly come before the final match like in the previous example, but can also come after like this: `/match(?=must_follo_match)/`
+lookahead expressions can come before the final match like in the previous example, but can also come after like this: `/match(?=must_follo_match)/`.
+I find the second syntax more clear.
 
 
 ## Negative lookahead assertions
@@ -54,9 +55,9 @@ Negative lookahead is quite less used compared to positive lookahead and can lea
 
 The syntax is as follows: the group of characters that should not be there for a match to be valid is placed after the expression `?!` inside a pair of parenthesis.
 
-Example: the pattern `/(?!café noir)café/` will match `"café"` in the string`"J'aime le café au lait"` because the sub-string `"café`" is not followed by one or more space characters and the sub-string `"noir"`.
+Example: the pattern `/(?!café\s+noir)café/` will match `"café"` in the string `"J'aime le café au lait"` because the sub-string `"café`" is not followed by one or more space characters and the sub-string `"noir"`.
 
-A real-world problem where a negative lookhead can be useful would be ignoring comment lines while parsing a Python.
+A real-world problem where a negative lookhead can be useful would be ignoring comment lines while parsing a Python script.
 
 ## Lookbehind assertions
 
@@ -65,14 +66,24 @@ Just like lookahead assertions, they are not added to the final match and are no
 
 The syntax for positive lookbehind is `(?<=)` and `(?<!)` for negative lookbehind.
 
-example: the pattern `(?<=fruit )salad` will match `"salad"` in the string `"fruit salad"`
+example: the pattern `(?<=fruit\s+)salad` will match `"salad"` in the string `"fruit salad"`
 
-for more convenience, it is preferable to keep "lookahead" assertions ahead and lookbehind assertions "behind".
+for more convenience, it is preferable to keep lookahead assertions "ahead" and lookbehind assertions "behind".
 
-An important thing to remember is:
-lookbehind assertions with variable length are not supported by most regex engines `(?<=(this|that|butNotThisOne))`, `'(?<=[abc]*)`.
+An important thing to know is:\
+lookbehind assertions with variable length are not supported by most regex engines. This pattern `(?<=(this|that|butNotThisOne))` and this one `'(?<=[abc]*)` will throw a `lookbehind assertion is not fixed length ERROR`.
 On the other hand, lookahead assertions with variable length are fully supported in most regex engines.
 
 ## Multiple lookaround assertions
 
+We can use more than one lookaround assertion in a pattern. An association of one positive and one negative lookahead or lookbehind for instance or a positive lookahead and a positive lookbehind. This will narrow down the matching possibilities and increase matching precision.
 
+Example: `/\b(?=\w{6,})sea(?!shore)\w+\b//`, which will match a word of minimum length 6, starting with sea and is not seashore.
+
+A zero-width position match can also be done for finding and replacing. An example of that is the `/(?<=[a-z])(?=[A-Z])/` which can be used to insert a string between a lowercase letter followed by an uppercase letter.
+
+multiple lookaround assertions in regex should be used sparingly, because:
+- they have a very bad impact on performance
+- they are slow, because of the multitude of possibilities to look for.
+
+usage of start and end anchors and world boundaries can help lower the charge.
